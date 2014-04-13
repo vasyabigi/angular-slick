@@ -1,0 +1,9 @@
+{
+  "name": "angular-slick",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "1.2.6",
+    "slick-carousel": "~1.3.4",
+    "angular-highlightjs": "~0.2.7"
+  }
+}
