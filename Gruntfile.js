@@ -142,8 +142,9 @@ module.exports = function (grunt) {
     // Compiles CoffeeScript to JavaScript
     coffee: {
       options: {
-        sourceMap: true,
-        sourceRoot: ''
+        sourceMap: false,
+        sourceRoot: '',
+        bare: true
       },
       dist: {
         files: [{
@@ -246,7 +247,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '.tmp/concat/scripts',
           src: '*.js',
-          dest: '.tmp/concat/scripts'
+          dest: '<%= yeoman.dist %>'
         }]
       }
     },
@@ -321,15 +322,15 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
+    uglify: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/slick.min.js': [
+            '<%= yeoman.dist %>/slick.js'
+          ]
+        }
+      }
+    },
     // concat: {
     //   dist: {}
     // },
@@ -374,19 +375,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    // 'bower-install',
     'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
+    'coffee:dist',
     'concat',
     'ngmin',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'rev',
-    'usemin',
-    'htmlmin'
+    'uglify:dist'
   ]);
 
   grunt.registerTask('default', [
