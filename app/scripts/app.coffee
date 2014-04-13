@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('slick-carousel', ['hljs'])
+angular.module('slick', [])
   .directive "slick", () ->
     restrict: "AEC"
     scope:
