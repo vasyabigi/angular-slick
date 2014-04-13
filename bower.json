@@ -3,7 +3,7 @@
   "dependencies": {
     "jquery": "~2.1.0",
     "angular": "~1.2.16",
-    "angular-slick": "~0.1.0",
+    "angular-slick": "~0.1.2",
     "angular-highlightjs": "~0.2.7"
   }
 }
