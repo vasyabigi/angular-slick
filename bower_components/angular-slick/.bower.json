@@ -1,0 +1,28 @@
+{
+  "name": "angular-slick",
+  "version": "0.1.0",
+  "main": "dist/slick.js",
+  "ignore": [
+    "app"
+  ],
+  "keywords": [
+    "angular",
+    "slick",
+    "carousel"
+  ],
+  "dependencies": {
+    "angular": "1.2.6",
+    "slick-carousel": "~1.3.4",
+    "angular-highlightjs": "~0.2.7"
+  },
+  "homepage": "https://github.com/vasyabigi/angular-slick",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "365db6da01f5130138ddc30bcd73d185dd79d142"
+  },
+  "_source": "git://github.com/vasyabigi/angular-slick.git",
+  "_target": "~0.1.0",
+  "_originalSource": "angular-slick"
+}
