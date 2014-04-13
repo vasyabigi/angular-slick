@@ -1,9 +1,17 @@
 {
   "name": "angular-slick",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/slick.js",
   "ignore": [
-    "app"
+    "app",
+    ".editorconfig",
+    ".gitattributes",
+    ".gitignore ",
+    ".jshintrc",
+    "Gruntfile.js",
+    "README.md ",
+    "bower.json",
+    "package.json"
   ],
   "keywords": [
     "angular",
