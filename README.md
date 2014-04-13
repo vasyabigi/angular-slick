@@ -1,7 +1,7 @@
 angular-slick
 =============
 
-Angular directive for [slick](https://github.com/kenwheeler/slick/) jquery carousel. Demo is [here](http://vasyabigi.github.io/angular-nouislider/).
+Angular directive for [slick](https://github.com/kenwheeler/slick/) jquery carousel. Demo is [here](http://vasyabigi.github.io/angular-slick/).
 
 ### Usage:
 
