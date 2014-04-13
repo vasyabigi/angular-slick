@@ -25,9 +25,17 @@ angular.module('MyApp', ['slick']);
 - Add a `slick` element to your html:
 
 ```html
-<slick></slick>
-<slick infinite=true slides-to-show=3 slides-to-scroll=3></slick>
-<slick dots=true infinite=false speed=300 slides-to-show=5 touch-move=false slides-to-scroll=1></slick>
+<slick>
+  ...
+</slick>
+
+<slick infinite=true slides-to-show=3 slides-to-scroll=3>
+  ...
+</slick>
+
+<slick dots=true infinite=false speed=300 slides-to-show=5 touch-move=false slides-to-scroll=1>
+  ...
+</slick>
 ```
 
 - If you wanna read about possible settings, go [here](http://kenwheeler.github.io/slick/#settings).
