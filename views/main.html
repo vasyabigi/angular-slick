@@ -112,6 +112,46 @@
   </div>
 </section>
 
+<section id="getting-started" class="white">
+  <div class="content">
+    <h2>Usage:</h2>
+    <br>
+    <p>Install bower component.</p>
+    <div hljs>
+
+  bower install angular-slick --save
+    </div>
+    <p>Add jquery, angular, slick-carousel and angular-slick.</p>
+    <div hljs>
+
+<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/slick-carousel/slick/slick.js"></script>
+<script src="bower_components/angular-slick/dist/slick.js"></script>
+    </div>
+    <br>
+      <p>Add a dependency to the "slick" module.</p>
+      <div>
+<div hljs>
+
+  angular.module('MyApp', ['slick']);
+
+</div>
+      </div>
+      <p>Add a `slick` element to your html.</p>
+      <div>
+      <div hljs>
+
+<slick></slick>
+<slick infinite=true slides-to-show=3 slides-to-scroll=3></slick>
+<slick dots=true infinite=false speed=300 slides-to-show=5 touch-move=false slides-to-scroll=1></slick>
+      </div>
+    </div>
+      <p>That's it!</p>
+  </div>
+</section>
+
 <section id="go-get-it" class="white">
   <div class="content">
     <p class="guff">Information about all settings you can find at original <a href="http://kenwheeler.github.io/slick/">slick</a> site.</p>
