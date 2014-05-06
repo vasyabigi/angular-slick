@@ -1,6 +1,6 @@
 {
   "name": "angular-slick",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "dist/slick.js",
   "ignore": [
     "app",
