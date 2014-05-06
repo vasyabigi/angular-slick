@@ -4,6 +4,7 @@ angular.module('slick', [])
   .directive "slick", () ->
     restrict: "AEC"
     scope:
+      currentIndex: "="
       accessibility: "@"
       arrows: "@"
       autoplay: "@"
@@ -32,7 +33,11 @@ angular.module('slick', [])
       touchThreshold: "@"
       vertical: "@"
     link: (scope, element, attrs) ->
-      $(element).slick
+
+      slider = $(element)
+      currentIndex = scope.currentIndex if scope.currentIndex?
+
+      slider.slick
         accessibility: scope.accessibility isnt "false"
         arrows: scope.arrows isnt "false"
         autoplay: scope.autoplay is "true"
@@ -47,8 +52,17 @@ angular.module('slick', [])
         infinite: scope.infinite isnt "false"
         lazyLoad: scope.lazyLoad or "ondemand"
         onBeforeChange: scope.onBeforeChange or null
-        onAfterChange: scope.onAfterChange or null
-        onInit: scope.onInit or null
+        onAfterChange: (sl, index) ->
+          scope.onAfterChange() if scope.onAfterChange
+          if currentIndex?
+            scope.$apply(->
+              currentIndex = index
+              scope.currentIndex = index
+            )
+        onInit: (sl) ->
+          scope.onInit() if scope.onInit
+          if currentIndex?
+            sl.slideHandler(currentIndex)
         onReInit: scope.onReInit or null
         pauseOnHover: scope.pauseOnHover isnt "false"
         responsive: scope.responsive or null
@@ -60,3 +74,8 @@ angular.module('slick', [])
         touchMove: scope.touchMove isnt "false"
         touchThreshold: if scope.touchThreshold then parseInt(scope.touchThreshold, 10) else 5
         vertical: scope.vertical is "true"
+
+      scope.$watch("currentIndex", (newVal, oldVal) ->
+        if currentIndex? and newVal? and newVal != currentIndex
+          slider.slickGoTo(newVal)
+      )

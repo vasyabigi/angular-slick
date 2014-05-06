@@ -9,17 +9,19 @@
   </div>
 </div>
 
-<section id="features" class="blue">
+<section id="features" class="blue" ng-init="index=2">
   <div class="content">
     <h2>Single Item</h2>
-    <slick class="slider single-item">
+    <slick class="slider single-item" current-index="index">
       <div><h3>1</h3></div>
       <div><h3>2</h3></div>
       <div><h3>3</h3></div>
       <div><h3>4</h3></div>
       <div><h3>5</h3></div>
       <div><h3>6</h3></div>
+      <p>Current index: {{ index }}</p>
     </slick>
+    <p ng-click="index=4">Change index to 4</p>
     <br>
     <hr/>
     <h2>Multiple Items</h2>
