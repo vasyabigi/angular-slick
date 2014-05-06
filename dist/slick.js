@@ -3,6 +3,7 @@ angular.module('slick', []).directive('slick', function () {
   return {
     restrict: 'AEC',
     scope: {
+      currentIndex: '=',
       accessibility: '@',
       arrows: '@',
       autoplay: '@',
@@ -32,7 +33,12 @@ angular.module('slick', []).directive('slick', function () {
       vertical: '@'
     },
     link: function (scope, element, attrs) {
-      return $(element).slick({
+      var currentIndex, slider;
+      slider = $(element);
+      if (scope.currentIndex != null) {
+        currentIndex = scope.currentIndex;
+      }
+      slider.slick({
         accessibility: scope.accessibility !== 'false',
         arrows: scope.arrows !== 'false',
         autoplay: scope.autoplay === 'true',
@@ -47,8 +53,25 @@ angular.module('slick', []).directive('slick', function () {
         infinite: scope.infinite !== 'false',
         lazyLoad: scope.lazyLoad || 'ondemand',
         onBeforeChange: scope.onBeforeChange || null,
-        onAfterChange: scope.onAfterChange || null,
-        onInit: scope.onInit || null,
+        onAfterChange: function (sl, index) {
+          if (scope.onAfterChange) {
+            scope.onAfterChange();
+          }
+          if (currentIndex != null) {
+            return scope.$apply(function () {
+              currentIndex = index;
+              return scope.currentIndex = index;
+            });
+          }
+        },
+        onInit: function (sl) {
+          if (scope.onInit) {
+            scope.onInit();
+          }
+          if (currentIndex != null) {
+            return sl.slideHandler(currentIndex);
+          }
+        },
         onReInit: scope.onReInit || null,
         pauseOnHover: scope.pauseOnHover !== 'false',
         responsive: scope.responsive || null,
@@ -60,6 +83,11 @@ angular.module('slick', []).directive('slick', function () {
         touchMove: scope.touchMove !== 'false',
         touchThreshold: scope.touchThreshold ? parseInt(scope.touchThreshold, 10) : 5,
         vertical: scope.vertical === 'true'
+      });
+      return scope.$watch('currentIndex', function (newVal, oldVal) {
+        if (currentIndex != null && newVal != null && newVal !== currentIndex) {
+          return slider.slickGoTo(newVal);
+        }
       });
     }
   };
