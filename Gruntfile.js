@@ -18,6 +18,8 @@ module.exports = function (grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+    bower: grunt.file.readJSON('bower.json'),
+
     // Project settings
     yeoman: {
       // configurable paths
@@ -323,6 +325,9 @@ module.exports = function (grunt) {
     //   }
     // },
     uglify: {
+      options: {
+        banner: '/*! <%= bower.name %>  v<%= bower.version %> */\n'
+      },
       dist: {
         files: {
           '<%= yeoman.dist %>/slick.min.js': [
