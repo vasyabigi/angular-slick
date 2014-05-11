@@ -13,12 +13,7 @@
   <div class="content">
     <h2>Single Item</h2>
     <slick class="slider single-item" current-index="index">
-      <div><h3>1</h3></div>
-      <div><h3>2</h3></div>
-      <div><h3>3</h3></div>
-      <div><h3>4</h3></div>
-      <div><h3>5</h3></div>
-      <div><h3>6</h3></div>
+      <div ng-repeat="i in [1,2,3,4,5,6]"><h3>{{ i }}</h3></div>
       <p>Current index: {{ index }}</p>
     </slick>
     <p ng-click="index=4">Change index to 4</p>
