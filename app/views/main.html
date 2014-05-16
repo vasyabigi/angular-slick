@@ -12,8 +12,8 @@
 <section id="features" class="blue" ng-init="index=2">
   <div class="content">
     <h2>Single Item</h2>
-    <slick class="slider single-item" current-index="index">
-      <div ng-repeat="i in [1,2,3,4,5,6]"><h3>{{ i }}</h3></div>
+    <slick class="slider single-item" current-index="index" responsive="breakpoints" slides-to-show=3 slides-to-scroll=3>
+      <div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"><h3>{{ i }}</h3></div>
       <p>Current index: {{ index }}</p>
     </slick>
     <p ng-click="index=4">Change index to 4</p>

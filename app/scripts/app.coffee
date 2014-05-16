@@ -23,7 +23,7 @@ angular.module('slick', [])
       onInit: "@"
       onReInit: "@"
       pauseOnHover: "@"
-      responsive: "@"
+      responsive: "&"
       slide: "@"
       slidesToShow: "@"
       slidesToScroll: "@"
@@ -33,6 +33,8 @@ angular.module('slick', [])
       touchThreshold: "@"
       vertical: "@"
     link: (scope, element, attrs) ->
+
+      console.log scope.responsive()
 
       $timeout(() ->
         slider = $(element)
@@ -66,7 +68,7 @@ angular.module('slick', [])
               sl.slideHandler(currentIndex)
           onReInit: scope.onReInit or null
           pauseOnHover: scope.pauseOnHover isnt "false"
-          responsive: scope.responsive or null
+          responsive: scope.responsive() or null
           slide: scope.slide or "div"
           slidesToShow: if scope.slidesToShow? then parseInt(scope.slidesToShow, 10) else 1
           slidesToScroll: if scope.slidesToScroll? then parseInt(scope.slidesToScroll, 10) else 1
