@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('slick', [])
-  .directive "slick", () ->
+  .directive "slick", ($timeout) ->
     restrict: "AEC"
     scope:
       currentIndex: "="
@@ -34,7 +34,7 @@ angular.module('slick', [])
       vertical: "@"
     link: (scope, element, attrs) ->
 
-      angular.element(document).ready(() ->
+      $timeout(() ->
         slider = $(element)
         currentIndex = scope.currentIndex if scope.currentIndex?
 
