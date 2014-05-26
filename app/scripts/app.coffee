@@ -34,8 +34,6 @@ angular.module('slick', [])
       vertical: "@"
     link: (scope, element, attrs) ->
 
-      console.log scope.responsive()
-
       $timeout(() ->
         slider = $(element)
         currentIndex = scope.currentIndex if scope.currentIndex?
