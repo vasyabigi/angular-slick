@@ -35,7 +35,6 @@ angular.module('slick', []).directive('slick', [
         vertical: '@'
       },
       link: function (scope, element, attrs) {
-        console.log(scope.responsive());
         return $timeout(function () {
           var currentIndex, slider;
           slider = $(element);
