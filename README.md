@@ -38,6 +38,14 @@ angular.module('MyApp', ['slick']);
 </slick>
 ```
 
+- For initialization carousel after data is loaded use `init-onload` property. Example:
+
+```html
+<slick init-onload=true data="awesomeThings">
+  ...
+</slick>
+```
+
 - If you wanna read about possible settings, go [here](http://kenwheeler.github.io/slick/#settings).
 
 That's it!
