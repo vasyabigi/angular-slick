@@ -1,12 +1,18 @@
 'use strict'
 
 angular.module('slick')
-  .controller 'MainCtrl', ($scope) ->
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
+  .controller 'MainCtrl', ($scope, $timeout) ->
+    $timeout(() ->
+      $scope.awesomeThings = [
+        'HTML5'
+        'AngularJS'
+        'Karma'
+        'Slick'
+        'Bower'
+        'Coffee'
+      ]
+    , 1000)
+
 
     $scope.breakpoints = [
       breakpoint: 768
