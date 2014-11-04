@@ -34,6 +34,9 @@ angular.module('slick', [])
       touchMove: "@"
       touchThreshold: "@"
       vertical: "@"
+      prevArrow:"@"
+      nextArrow:"@"
+
     link: (scope, element, attrs) ->
 
       initializeSlick = () ->
@@ -78,6 +81,8 @@ angular.module('slick', [])
             touchMove: scope.touchMove isnt "false"
             touchThreshold: if scope.touchThreshold then parseInt(scope.touchThreshold, 10) else 5
             vertical: scope.vertical is "true"
+            prevArrow: if scope.prevArrow then $(scope.prevArrow) else undefined
+            nextArrow: if scope.nextArrow then $(scope.nextArrow) else undefined
 
           scope.$watch("currentIndex", (newVal, oldVal) ->
             if currentIndex? and newVal? and newVal != currentIndex

@@ -35,8 +35,8 @@ angular.module('slick', []).directive('slick', [
         touchMove: '@',
         touchThreshold: '@',
         vertical: '@',
-        prevArrow:'@',
-        nextArrow:'@'
+        prevArrow: '@',
+        nextArrow: '@'
       },
       link: function (scope, element, attrs) {
         var initializeSlick, isInitialized;
@@ -92,8 +92,8 @@ angular.module('slick', []).directive('slick', [
               touchMove: scope.touchMove !== 'false',
               touchThreshold: scope.touchThreshold ? parseInt(scope.touchThreshold, 10) : 5,
               vertical: scope.vertical === 'true',
-              prevArrow: scope.prevArrow ? $(scope.prevArrow) : undefined,
-              nextArrow: scope.nextArrow ? $(scope.nextArrow) : undefined
+              prevArrow: scope.prevArrow ? $(scope.prevArrow) : void 0,
+              nextArrow: scope.nextArrow ? $(scope.nextArrow) : void 0
             });
             return scope.$watch('currentIndex', function (newVal, oldVal) {
               if (currentIndex != null && newVal != null && newVal !== currentIndex) {
