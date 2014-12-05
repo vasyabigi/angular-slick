@@ -32,7 +32,7 @@ angular.module('slick', [])
       onSetPosition: "&"
       pauseOnHover: "@"
       pauseOnDotsHover: "@"
-      responsive: "&"
+      responsive: "@"
       rtl: "@"
       slide: "@"
       slidesToShow: "@"
@@ -58,8 +58,8 @@ angular.module('slick', [])
             accessibility: scope.accessibility isnt "false"
             adaptiveHeight: scope.adaptiveHeight is "true"
             arrows: scope.arrows isnt "false"
-            asNavFor: if scope.asNavFor then scope.asNavFor else null
-            appendArrows: if scope.appendArrows then $(appendArrows) else null
+            asNavFor: if scope.asNavFor then scope.asNavFor else undefined
+            appendArrows: if scope.appendArrows then $(appendArrows) else undefined
             autoplay: scope.autoplay is "true"
             autoplaySpeed: if scope.autoplaySpeed? then parseInt(scope.autoplaySpeed, 10) else 3000
             centerMode: scope.centerMode is "true"
@@ -73,22 +73,22 @@ angular.module('slick', [])
             infinite: scope.infinite isnt "false"
             initialSlide:scope.initialSlide or 0
             lazyLoad: scope.lazyLoad or "ondemand"
-            onBeforeChange: scope.onBeforeChange or null
+            onBeforeChange: if attrs.onBeforeChange then scope.onBeforeChange else undefined
             onAfterChange: (sl, index) ->
-              scope.onAfterChange() if scope.onAfterChange
+              scope.onAfterChange() if attrs.onAfterChange
               if currentIndex?
                 scope.$apply(->
                   currentIndex = index
                   scope.currentIndex = index
                 )
             onInit: (sl) ->
-              scope.onInit() if scope.onInit
+              scope.onInit() if attrs.onInit
               if currentIndex?
                 sl.slideHandler(currentIndex)
-            onReInit: scope.onReInit or null
-            onSetPosition: scope.onSetPosition or null
+            onReInit: if attrs.onReInit then scope.onReInit else undefined
+            onSetPosition: if attrs.onSetPosition then scope.onSetPosition else undefined
             pauseOnHover: scope.pauseOnHover isnt "false"
-            responsive: scope.responsive() or null
+            responsive: scope.responsive or null,
             rtl: scope.rtl is "true"
             slide: scope.slide or "div"
             slidesToShow: if scope.slidesToShow? then parseInt(scope.slidesToShow, 10) else 1

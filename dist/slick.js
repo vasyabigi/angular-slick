@@ -33,7 +33,7 @@ angular.module('slick', []).directive('slick', [
         onSetPosition: '&',
         pauseOnHover: '@',
         pauseOnDotsHover: '@',
-        responsive: '&',
+        responsive: '@',
         rtl: '@',
         slide: '@',
         slidesToShow: '@',
@@ -62,8 +62,8 @@ angular.module('slick', []).directive('slick', [
               accessibility: scope.accessibility !== 'false',
               adaptiveHeight: scope.adaptiveHeight === 'true',
               arrows: scope.arrows !== 'false',
-              asNavFor: scope.asNavFor ? scope.asNavFor : null,
-              appendArrows: scope.appendArrows ? $(appendArrows) : null,
+              asNavFor: scope.asNavFor ? scope.asNavFor : void 0,
+              appendArrows: scope.appendArrows ? $(appendArrows) : void 0,
               autoplay: scope.autoplay === 'true',
               autoplaySpeed: scope.autoplaySpeed != null ? parseInt(scope.autoplaySpeed, 10) : 3000,
               centerMode: scope.centerMode === 'true',
@@ -77,9 +77,9 @@ angular.module('slick', []).directive('slick', [
               infinite: scope.infinite !== 'false',
               initialSlide: scope.initialSlide || 0,
               lazyLoad: scope.lazyLoad || 'ondemand',
-              onBeforeChange: scope.onBeforeChange || null,
+              onBeforeChange: attrs.onBeforeChange ? scope.onBeforeChange : void 0,
               onAfterChange: function (sl, index) {
-                if (scope.onAfterChange) {
+                if (attrs.onAfterChange) {
                   scope.onAfterChange();
                 }
                 if (currentIndex != null) {
@@ -90,17 +90,17 @@ angular.module('slick', []).directive('slick', [
                 }
               },
               onInit: function (sl) {
-                if (scope.onInit) {
+                if (attrs.onInit) {
                   scope.onInit();
                 }
                 if (currentIndex != null) {
                   return sl.slideHandler(currentIndex);
                 }
               },
-              onReInit: scope.onReInit || null,
-              onSetPosition: scope.onSetPosition || null,
+              onReInit: attrs.onReInit ? scope.onReInit : void 0,
+              onSetPosition: attrs.onSetPosition ? scope.onSetPosition : void 0,
               pauseOnHover: scope.pauseOnHover !== 'false',
-              responsive: scope.responsive() || null,
+              responsive: scope.responsive || null,
               rtl: scope.rtl === 'true',
               slide: scope.slide || 'div',
               slidesToShow: scope.slidesToShow != null ? parseInt(scope.slidesToShow, 10) : 1,
