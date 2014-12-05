@@ -88,7 +88,7 @@ angular.module('slick', [])
             onReInit: if attrs.onReInit then scope.onReInit else undefined
             onSetPosition: if attrs.onSetPosition then scope.onSetPosition else undefined
             pauseOnHover: scope.pauseOnHover isnt "false"
-            responsive: scope.responsive or null,
+            responsive: scope.responsive or null
             rtl: scope.rtl is "true"
             slide: scope.slide or "div"
             slidesToShow: if scope.slidesToShow? then parseInt(scope.slidesToShow, 10) else 1
