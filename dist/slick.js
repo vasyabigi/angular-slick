@@ -69,7 +69,7 @@ angular.module('slick', []).directive('slick', [
               centerMode: scope.centerMode === 'true',
               centerPadding: scope.centerPadding || '50px',
               cssEase: scope.cssEase || 'ease',
-              customPaging: scope.customPaging || null,
+              customPaging: attrs.customPaging ? scope.customPaging : void 0,
               dots: scope.dots === 'true',
               draggable: scope.draggable !== 'false',
               easing: scope.easing || 'linear',
