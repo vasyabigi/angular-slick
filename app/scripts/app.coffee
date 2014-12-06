@@ -59,7 +59,7 @@ angular.module('slick', [])
             adaptiveHeight: scope.adaptiveHeight is "true"
             arrows: scope.arrows isnt "false"
             asNavFor: if scope.asNavFor then scope.asNavFor else undefined
-            appendArrows: if scope.appendArrows then $(appendArrows) else undefined
+            appendArrows: if scope.appendArrows then $(appendArrows) else $(element)
             autoplay: scope.autoplay is "true"
             autoplaySpeed: if scope.autoplaySpeed? then parseInt(scope.autoplaySpeed, 10) else 3000
             centerMode: scope.centerMode is "true"
@@ -88,7 +88,7 @@ angular.module('slick', [])
             onReInit: if attrs.onReInit then scope.onReInit else undefined
             onSetPosition: if attrs.onSetPosition then scope.onSetPosition else undefined
             pauseOnHover: scope.pauseOnHover isnt "false"
-            responsive: scope.responsive or null
+            responsive: scope.responsive or undefined
             rtl: scope.rtl is "true"
             slide: scope.slide or "div"
             slidesToShow: if scope.slidesToShow? then parseInt(scope.slidesToShow, 10) else 1
@@ -99,7 +99,7 @@ angular.module('slick', [])
             touchMove: scope.touchMove isnt "false"
             touchThreshold: if scope.touchThreshold then parseInt(scope.touchThreshold, 10) else 5
             useCSS: scope.useCSS isnt "false"
-            variableWidth: scope.variableWidth isnt "false"
+            variableWidth: scope.variableWidth is "true"
             vertical: scope.vertical is "true"
             prevArrow: if scope.prevArrow then $(scope.prevArrow) else undefined
             nextArrow: if scope.nextArrow then $(scope.nextArrow) else undefined
