@@ -12,6 +12,7 @@ angular.module('slick', [])
       arrows: "@"
       asNavFor: "@"
       appendArrows: "@"
+      appendDots: "@"
       autoplay: "@"
       autoplaySpeed: "@"
       centerMode: "@"
@@ -59,7 +60,8 @@ angular.module('slick', [])
             adaptiveHeight: scope.adaptiveHeight is "true"
             arrows: scope.arrows isnt "false"
             asNavFor: if scope.asNavFor then scope.asNavFor else undefined
-            appendArrows: if scope.appendArrows then $(appendArrows) else $(element)
+            appendArrows: if scope.appendArrows then $(scope.appendArrows) else $(element)
+            appendDots: if scope.appendDots then $(scope.appendDots) else $(element)
             autoplay: scope.autoplay is "true"
             autoplaySpeed: if scope.autoplaySpeed? then parseInt(scope.autoplaySpeed, 10) else 3000
             centerMode: scope.centerMode is "true"
