@@ -56,6 +56,8 @@ angular.module('slick', [])
         $timeout(() ->
           slider = $(element)
           currentIndex = scope.currentIndex if scope.currentIndex?
+          customPaging = (slick, index) ->
+            scope.customPaging({ slick: slick, index: index })
           slider.slick
             accessibility: scope.accessibility isnt "false"
             adaptiveHeight: scope.adaptiveHeight is "true"
@@ -68,7 +70,7 @@ angular.module('slick', [])
             centerMode: scope.centerMode is "true"
             centerPadding: scope.centerPadding or "50px"
             cssEase: scope.cssEase or "ease"
-            customPaging: if attrs.customPaging then scope.customPaging else undefined
+            customPaging: if attrs.customPaging then customPaging else undefined
             dots: scope.dots is "true"
             draggable: scope.draggable isnt "false"
             easing: scope.easing or "linear"
