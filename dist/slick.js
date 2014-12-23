@@ -35,7 +35,7 @@ angular.module('slick', []).directive('slick', [
         onSetPosition: '&',
         pauseOnHover: '@',
         pauseOnDotsHover: '@',
-        responsive: '@',
+        responsive: '=',
         rtl: '@',
         slide: '@',
         slidesToShow: '@',
