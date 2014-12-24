@@ -52,7 +52,16 @@ angular.module('slick', []).directive('slick', [
         nextArrow: '@'
       },
       link: function (scope, element, attrs) {
-        var initializeSlick, isInitialized;
+        var destroySlick, initializeSlick, isInitialized;
+        destroySlick = function () {
+          return $timeout(function () {
+            var slider;
+            slider = $(element);
+            slider.unslick();
+            slider.find('.slick-list').remove();
+            return slider;
+          });
+        };
         initializeSlick = function () {
           return $timeout(function () {
             var currentIndex, slider;
@@ -130,7 +139,10 @@ angular.module('slick', []).directive('slick', [
         if (scope.initOnload) {
           isInitialized = false;
           return scope.$watch('data', function (newVal, oldVal) {
-            if (newVal != null && !isInitialized) {
+            if (newVal != null) {
+              if (isInitialized) {
+                destroySlick();
+              }
               initializeSlick();
               return isInitialized = true;
             }
