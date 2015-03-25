@@ -61,9 +61,12 @@ angular.module('slick', [])
       initializeSlick = () ->
         $timeout(() ->
           slider = $(element)
+
           currentIndex = scope.currentIndex if scope.currentIndex?
+
           customPaging = (slick, index) ->
             scope.customPaging({ slick: slick, index: index })
+
           slider.slick
             accessibility: scope.accessibility isnt "false"
             adaptiveHeight: scope.adaptiveHeight is "true"
@@ -85,18 +88,7 @@ angular.module('slick', [])
             infinite: scope.infinite isnt "false"
             initialSlide:scope.initialSlide or 0
             lazyLoad: scope.lazyLoad or "ondemand"
-            onBeforeChange: if attrs.onBeforeChange then scope.onBeforeChange else undefined
-            onAfterChange: (sl, index) ->
-              scope.onAfterChange() if attrs.onAfterChange
-              if currentIndex?
-                scope.$apply(->
-                  currentIndex = index
-                  scope.currentIndex = index
-                )
-            onInit: (sl) ->
-              scope.onInit() if attrs.onInit
-              if currentIndex?
-                sl.slideHandler(currentIndex)
+            beforeChange: if attrs.onBeforeChange then scope.onBeforeChange else undefined
             onReInit: if attrs.onReInit then scope.onReInit else undefined
             onSetPosition: if attrs.onSetPosition then scope.onSetPosition else undefined
             pauseOnHover: scope.pauseOnHover isnt "false"
@@ -117,9 +109,23 @@ angular.module('slick', [])
             nextArrow: if scope.nextArrow then $(scope.nextArrow) else undefined
 
 
+          slider.on 'init', (sl) ->
+            scope.onInit() if attrs.onInit
+            if currentIndex?
+              sl.slideHandler(currentIndex)
+
+          slider.on 'afterChange', (event, slick, currentSlide, nextSlide) ->
+            scope.onAfterChange() if scope.onAfterChange
+
+            if currentIndex?
+              scope.$apply(->
+                currentIndex = currentSlide
+                scope.currentIndex = currentSlide
+              )
+
           scope.$watch("currentIndex", (newVal, oldVal) ->
             if currentIndex? and newVal? and newVal != currentIndex
-              slider.slickGoTo(newVal)
+              slider.slick('slickGoTo', newVal)
           )
         )
 
@@ -129,7 +135,7 @@ angular.module('slick', [])
           if newVal?
             if isInitialized
               destroySlick()
- 
+
             initializeSlick()
             isInitialized = true
         )

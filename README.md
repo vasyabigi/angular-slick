@@ -10,6 +10,7 @@ Angular directive for [slick](https://github.com/kenwheeler/slick/) jquery carou
 
 ```html
 <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
 <script src="bower_components/jquery/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/slick-carousel/slick/slick.js"></script>
