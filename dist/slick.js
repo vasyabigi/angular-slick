@@ -57,7 +57,7 @@ angular.module('slick', []).directive('slick', [
           return $timeout(function () {
             var slider;
             slider = $(element);
-            slider.unslick();
+            slider.slick('unslick');
             slider.find('.slick-list').remove();
             return slider;
           });
