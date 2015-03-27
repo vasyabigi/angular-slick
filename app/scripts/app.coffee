@@ -54,7 +54,7 @@ angular.module('slick', [])
       destroySlick = () ->
         $timeout(() ->
           slider = $(element)
-          slider.unslick()
+          slider.slick('unslick')
           slider.find('.slick-list').remove()
           slider
         )
